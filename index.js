@@ -18,6 +18,15 @@ app.use(require("./router/auth"));
 app.use(require("./router/tweets"));
 app.use(require("./router/user"));
 
+
+// for heroku
+
+if(process.env.NODE_ENV == "production"){
+  app.use(express.static("client/build"))
+}
+
+
+
 app.listen(PORT, () => {
   console.log(`listening at port no. ${PORT}`);
 });
